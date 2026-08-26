@@ -1,0 +1,27 @@
+# /etc/systemd/system/cowrie.service
+#
+# Copy to /etc/systemd/system/cowrie.service, adjust the user/paths
+# if your install location differs, then:
+#   systemctl daemon-reload
+#   systemctl enable --now cowrie
+#
+# Note the explicit PATH — without it, twistd can't be found outside
+# an activated venv shell, and cowrie start will fail with
+# FileNotFoundError. See docs/gotchas.md.
+
+[Unit]
+Description=Cowrie SSH/Telnet Honeypot
+After=network.target
+
+[Service]
+Type=forking
+User=cowrie
+WorkingDirectory=/home/cowrie/cowrie
+Environment="PATH=/home/cowrie/cowrie/cowrie-env/bin:/usr/bin:/bin"
+ExecStart=/home/cowrie/cowrie/cowrie-env/bin/cowrie start
+ExecStop=/home/cowrie/cowrie/cowrie-env/bin/cowrie stop
+PIDFile=/home/cowrie/cowrie/var/run/cowrie.pid
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

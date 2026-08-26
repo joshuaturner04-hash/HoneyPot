@@ -1,0 +1,12 @@
+# /etc/wireguard/wg0.conf — VPS side
+#
+# Copy to /etc/wireguard/wg0.conf and fill in the placeholders.
+
+[Interface]
+PrivateKey = <VPS_PRIVATE_KEY>
+Address = 10.200.200.1/24
+ListenPort = 51820
+
+[Peer]
+PublicKey = <HONEYPOT_PUBLIC_KEY>
+AllowedIPs = 10.200.200.2/32
