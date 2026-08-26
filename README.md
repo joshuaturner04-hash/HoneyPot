@@ -7,7 +7,9 @@
 
 A home-lab SSH honeypot built on Proxmox, exposed to the real internet through a WireGuard tunnel to a cheap VPS (to work around CGNAT), with attacker sessions logged, geolocated, and visualized live on a Grafana world map.
 
-> 💡 Add a screenshot of your live Geomap dashboard here once it's populated with real traffic — it's the best way to show what this actually does.
+<p align="center">
+  <img src="docs/images/geomap-dashboard.png" alt="Live attacker geomap dashboard" width="720">
+</p>
 
 ## Table of contents
 
